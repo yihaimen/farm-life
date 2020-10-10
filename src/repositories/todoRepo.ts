@@ -1,5 +1,5 @@
 import { DB_PATH } from "../config.ts";
-import { Todo } from "../models/todo";
+import { Todo } from "../models/todo.ts";
 
 export const fetchData = async (): Promise<Todo[]> => {
   const data = await Deno.readFile(DB_PATH);

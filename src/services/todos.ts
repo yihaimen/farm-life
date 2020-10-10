@@ -1,6 +1,6 @@
-import { fetchData, persistData } from "../repositories/todoRepo";
+import { fetchData, persistData } from "../repositories/todoRepo.ts";
 import { Todo } from "../models/todo.ts";
-import { createId } from "../utils/commonHelper";
+import { createId } from "../utils/commonHelper.ts";
 
 type TodoData = Pick<Todo, "userId" | "title" | "completed">;
 
