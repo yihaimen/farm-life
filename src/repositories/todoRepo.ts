@@ -1,16 +1,29 @@
 import { DB_PATH } from "../config.ts";
-import { Todo } from "../models/todo.ts";
+import { ITodo } from "../models/todo.ts";
 
-export const fetchData = async (): Promise<Todo[]> => {
-  const data = await Deno.readFile(DB_PATH);
+export const fetchData = async () => {
+  return await readJSONFile(Deno.cwd() + DB_PATH);
+};
+
+export const persistData = async (todo: ITodo) => {
+  return await saveTodo(todo)
+};
+
+const readJSONFile = async (filePath: string) => {
+  const data = await Deno.readFile(filePath);
 
   const decoder = new TextDecoder();
   const decodedData = decoder.decode(data);
-
   return JSON.parse(decodedData);
 };
 
-export const persistData = async (data: Todo[]): Promise<void> => {
+const saveTodo = async (todo: ITodo) => {
+  let todoList = await readJSONFile(Deno.cwd() + DB_PATH);
+  todoList.push(todo);
+
   const encoder = new TextEncoder();
-  await Deno.writeFile(DB_PATH, encoder.encode(JSON.stringify(data)));
-};
+  return await Deno.writeFile(
+    Deno.cwd() + DB_PATH,
+    encoder.encode(JSON.stringify(todoList)),
+  );
+}
