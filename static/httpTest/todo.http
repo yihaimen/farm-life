@@ -1,2 +1,11 @@
 ### 获取Todo列表
 GET http://localhost:8088/todos HTTP/1.1
+
+### 新增Todo
+POST http://localhost:8088/todos HTTP/1.1
+content-type: application/json
+
+{
+  "userId": 666,
+  "title": "Learn Deno"
+}
