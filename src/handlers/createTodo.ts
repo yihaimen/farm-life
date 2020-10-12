@@ -29,3 +29,16 @@ export default async (
   const res = await request.body();
   response.body = res;
 };
+
+// import InvalidedParamsException from "../exception/InvalidedParamsException.ts";
+// export const add = async (
+//   { request, response }: { request: Request; response: Response },
+// ) => {
+//   const body = request.body();
+//   const values = await body.value;
+//   if (!values.userId || !values.title) {
+//     throw new InvalidedParamsException("userId and title must be supplied");
+//   }
+//   await addTodo(values.userId, values.title);
+//   response.status = 200;
+// };
