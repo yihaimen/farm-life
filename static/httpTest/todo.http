@@ -1,11 +1,28 @@
 ### 获取Todo列表
 GET http://localhost:8088/todos HTTP/1.1
 
+### 获取Todo详情
+GET http://localhost:8088/todos/f1e7f6c2-8bc9-4cb3-abd3-77646c950557 HTTP/1.1
+
+
 ### 新增Todo
 POST http://localhost:8088/todos HTTP/1.1
 content-type: application/json
 
 {
-  "userId": "666",
-  "title": "Learn Deno"
+    "userId": 888,
+    "title": "Learn JavaScript"
 }
+
+### 更新Todo
+PUT http://localhost:8088/todos/28f0faae-7b83-4914-bc3a-36bb3529e95c HTTP/1.1
+content-type: application/json
+
+{
+    "userId": 777,
+    "title": "Learn Python",
+    "completed": true  
+}
+
+### 删除Todo
+DELETE  http://localhost:8088/todos/444e4496-9058-4699-8385-d572cccf0c2f HTTP/1.1
